@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/shared.css">
+</head>
+    <style>
+        .task-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .task-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .task-reward {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #00ff9d;
+        }
+
+        .task-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .task-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <a href="index.html" class="back-button">
+            <svg width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 11.9299H2" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.00009 19L2.84009 14C2.5677 13.7429 2.35071 13.433 2.20239 13.0891C2.05407 12.7452 1.97754 12.3745 1.97754 12C1.97754 11.6255 2.05407 11.2548 2.20239 10.9109C2.35071 10.567 2.5677 10.2571 2.84009 10L8.00009 5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+        <span class="page-title">Tasks</span>
+    </div>
+
+    <div class="content-container">
+        <div class="task-card">
+            <div class="task-info">
+                <img src="./assets/images/4.gif" width="45px" alt="Join Community">
+                <div>
+                    <h4 style="color: white; margin: 0;">Join our Community</h4>
+                    <div class="task-reward">
+                        <img src="./assets/images/g.png" width="20px" alt="Coins">
+                        <span>2,500</span>
+                    </div>
+                </div>
+            </div>
+            <a href="https://t.me/gomidaaddis" class="task-button">Join Now</a>
+        </div>
+
+        <!-- Add more task cards as needed -->
+    </div>
+</body>
+</html>

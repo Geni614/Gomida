@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Guide</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/shared.css">
+    <style>
+        .guide-container {
+            padding: 1rem;
+            color: white;
+        }
+
+        .guide-section {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .guide-section h2 {
+            color: #00ff9d;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .guide-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .guide-step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .step-number {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h3 {
+            margin: 0 0 0.5rem 0;
+            color: #ffffff;
+        }
+
+        .step-content p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+
+        .tip-box {
+            background: rgba(0, 255, 157, 0.1);
+            border-left: 3px solid #00ff9d;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .tip-box h4 {
+            color: #00ff9d;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .reward-example {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+        }
+
+        .reward-example img {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <a href="index.html" class="back-button">
+            <svg width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 11.9299H2" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.00009 19L2.84009 14C2.5677 13.7429 2.35071 13.433 2.20239 13.0891C2.05407 12.7452 1.97754 12.3745 1.97754 12C1.97754 11.6255 2.05407 11.2548 2.20239 10.9109C2.35071 10.567 2.5677 10.2571 2.84009 10L8.00009 5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+        <span class="page-title">Game Guide</span>
+    </div>
+
+    <div class="content-container">
+        <div class="guide-container">
+            <div class="guide-section">
+                <h2>How to Play</h2>
+                <div class="guide-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Tap the Coin</h3>
+                        <p>Tap the coin as many times as you can within the 60-second time limit. Each tap earns you coins!</p>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Watch the Timer</h3>
+                        <p>Keep an eye on the countdown timer in the top-right corner. You have 60 seconds to collect as many coins as possible.</p>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Track Your Score</h3>
+                        <p>Your current coin count is displayed at the top of the screen. Try to beat your previous high score!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-section">
+                <h2>Extra Features</h2>
+                <div class="guide-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Invite Friends</h3>
+                        <p>Invite your friends to join the game and earn bonus rewards:</p>
+                        <div class="reward-example">
+                            <img src="./assets/images/g.png" alt="Coins">
+                            <span>2,500 coins for inviting 5 friends</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Leaderboard</h3>
+                        <p>Check the leaderboard to see how you rank against other players and compete for the top spot!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-section">
+                <h2>Pro Tips</h2>
+                <div class="tip-box">
+                    <h4>Speed Tip</h4>
+                    <p>Use multiple fingers to tap faster and increase your coin collection rate!</p>
+                </div>
+                <div class="tip-box">
+                    <h4>Time Management</h4>
+                    <p>The timer turns red in the last 10 seconds - make them count!</p>
+                </div>
+                <div class="tip-box">
+                    <h4>Daily Practice</h4>
+                    <p>Play regularly to improve your tapping speed and climb the leaderboard rankings.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

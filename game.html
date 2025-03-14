@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gomida</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <meta name="theme-color" content="#f19e36" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon/favicon.ico">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="balance-container">
+            <img src="./assets/images/g.png" alt="coin" width="45px">
+            <span id="balance">0</span>
+        </div>
+        <div class="timer-container">
+            <span id="timer">60</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="coin-wrapper">
+            <div class="magnetic-field"></div>
+            <div class="coin-container" id="main-coin">
+                <img src="./assets/images/rr.png" class="coin-image" alt="coin" />
+            </div>
+        </div>
+
+        <div class="menu-container">
+            <div class="menu-buttons">
+                <a href="frens.html" class="menu-button">
+                    <img src="./assets/images/friends.png" alt="friends" width="28px">
+                    <span>Invite</span>
+                </a>
+                <a href="earn.html" class="menu-button">
+                    <img src="./assets/images/mark.png" alt="tasks" width="28px">
+                    <span>Tasks</span>
+                </a>
+                <a href="balance.html" class="menu-button">
+                    <img src="./assets/images/nice.png" alt="balance" width="28px">
+                    <span>Balance</span>
+                </a>
+                <a href="leaderboard.html" class="menu-button">
+                    <img src="./assets/images/Trophy.png" alt="leaderboard" width="28px">
+                    <span>Leaders</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('get_timer.php');
+                const data = await response.json();
+                if (data.success) {
+                    const now = Math.floor(Date.now() / 1000);
+                    const timeLeft = Math.max(0, data.timer_end - now);
+                    startTimer(timeLeft, data.is_in_cooldown);
+                } else {
+                    console.error('Failed to fetch timer data');
+                }
+            } catch (error) {
+                console.error('Error fetching timer data:', error);
+            }
+        });
+
+        function startTimer(initialTime, isInCooldown) {
+            let timeLeft = initialTime;
+            const timerElement = document.getElementById('timer');
+            const coinElement = document.getElementById('main-coin');
+
+            function updateTimer() {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    timerElement.textContent = timeLeft;
+                    if (timeLeft === 0) {
+                        if (isInCooldown) {
+                            // Cooldown ended, start active period
+                            timeLeft = 60;
+                            isInCooldown = false;
+                            coinElement.classList.remove('disabled');
+                        } else {
+                            // Active period ended, start cooldown
+                            timeLeft = 120;
+                            isInCooldown = true;
+                            coinElement.classList.add('disabled');
+                        }
+                    }
+                }
+            }
+
+            setInterval(updateTimer, 1000);
+
+            coinElement.addEventListener('click', async () => {
+                if (!isInCooldown && timeLeft > 0) {
+                    try {
+                        const response = await fetch('collect_coin.php', {
+                            method: 'POST'
+                        });
+                        const data = await response.json();
+                        if (data.success) {
+                            document.getElementById('balance').textContent = data.new_balance;
+                        } else {
+                            console.error('Failed to collect coin');
+                        }
+                    } catch (error) {
+                        console.error('Error collecting coin:', error);
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
